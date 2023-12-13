@@ -51,7 +51,6 @@ export class HomePage implements OnInit{
         {
           text: 'Eliminar',
           handler: () => {
-            // Acción cuando se hace clic en "Eliminar"
             this.postService.deletePost(id);
           },
         },

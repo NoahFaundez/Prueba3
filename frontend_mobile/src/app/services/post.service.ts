@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,23 @@ export class PostService {
   }
 
   deletePost(id: any) {
-    this.httpClient.delete(this.deleteUrl + `${id}`);
+    this.httpClient.delete(this.deleteUrl + `${id}`)
+    .pipe(
+      tap(() => {
+        // Lógica adicional después de la eliminación, si es necesario
+        console.log('Post eliminado con éxito');
+        // Recargar la página solo después de la eliminación exitosa
+        window.location.reload();
+      })
+    )
+    .subscribe(
+      () => {
+        // Lógica adicional en caso de éxito
+      },
+      (error) => {
+        // Manejo de errores
+        console.error('Error al eliminar el post', error);
+      }
+    );
   }
 }
