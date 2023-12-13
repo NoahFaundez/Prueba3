@@ -1,20 +1,23 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      List of Posts
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <ion-card *ngFor="let post of this.posts">
+    <img src="{{ post.image }}" />
+    <ion-card-header>
+      <ion-card-title>{{ post.title }}</ion-card-title>
+      <ion-card-subtitle>Author: {{ post.author }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-button (click)="deletePost(post.id)" color="danger" shape="round">
+      Eliminar
+    </ion-button>
+    <ion-card-content>
+      {{ post.comment }}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
