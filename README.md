@@ -1,6 +1,6 @@
 # Prueba 3
 
-This is a repository for an a application that show users of the database in a Express server with Ionic client
+This is a repository for an a application that show posts of the database in a json server with Ionic client
 
 This project was generated with [Ionic CLI](https://ionicframework.com/)
 
